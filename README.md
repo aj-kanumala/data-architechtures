@@ -1,6 +1,6 @@
 # data-architectures
 
-## Architectures for modern data era
+## Architectures for Modern Data Era
 
 Data Lake and Data Warehouse architectures are fundamental to how organizations manage and leverage data in today’s data-driven world. 
 
