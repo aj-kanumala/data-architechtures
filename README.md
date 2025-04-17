@@ -2,7 +2,7 @@
 
 ## Architectures for Modern Data Era
 
-Data Lake and Data Warehouse architectures are fundamental to how organizations manage and leverage data in today’s data-driven world. 
+**Data Lake** and **Data Warehouse** architectures are fundamental to how organizations manage and leverage data in today’s data-driven world. 
 
 What intrigues us is how these systems address different problems—Data Warehouses for structured reporting and Data Lakes for raw, flexible analytics—yet often collaborate inmodern setups. The relevance of these systems to data science lies in their role as the foundation for
 storing and preparing data for analysis, machine learning, and insights generation. 
