@@ -69,7 +69,23 @@ def etl_pipeline(bucket_name, s3_key):
     conn.close()
     print("Loaded transformed data into Data Warehouse")
 
-# Step 4: Presentation Layer - Generate a report
+# Step 4: Upload the SQLite database to S3
+def upload_db_to_s3():
+    s3_client = boto3.client('s3')
+    bucket_name = "datalake-demo-2025"
+    s3_key = f"structured/data_warehouse.db"
+
+    try:
+        s3_client.upload_file("data_warehouse.db", bucket_name, s3_key)
+        print(f"Updated Data Warehouse in S3: s3://{bucket_name}/{s3_key}")
+    except ClientError as e:
+        print(f"Error uploading Data Warehouse to S3: {e}")
+        raise
+    except FileNotFoundError:
+        print("Error: data_warehouse.db not found locally")
+        raise
+
+# Step 5: Presentation Layer - Generate a report
 def generate_report():
     conn = sqlite3.connect("data_warehouse.db")
     query = "SELECT student_id, student_name, average_grade, attendance_rate FROM student_metrics"
@@ -81,12 +97,13 @@ def generate_report():
 
 # Main function to run the demo
 def main():
-    print("=== Starting Data Warehouse and S3 Data Lake Integration Demo ===\n")
+    print("=== Starting Data Warehouse and S3 Data Lake Integration Demo ===")
     create_mock_data()
     bucket_name, s3_key = store_in_s3()
     etl_pipeline(bucket_name, s3_key)
+    upload_db_to_s3() 
     generate_report()
-    print("\n=== Demo Complete ===")
+    print("=== Demo Complete ===")
 
 if __name__ == "__main__":
     main()
