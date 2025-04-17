@@ -1,4 +1,4 @@
-# data-architechtures
+# data-architectures
 
 ## Architectures for modern data era
 
