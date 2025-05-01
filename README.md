@@ -1,6 +1,6 @@
 # data-architectures
 
-## Architectures for Modern Data Era
+## Storage Architectures for Modern Data Era
 
 - Ajay Kanumala
 - Vinay Dussa
